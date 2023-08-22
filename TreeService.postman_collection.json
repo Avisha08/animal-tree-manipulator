@@ -1,0 +1,67 @@
+{
+	"info": {
+		"_postman_id": "08feb4ff-4615-4f3e-83c8-b084e2e91e8a",
+		"name": "Tree Manipulation",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Get Tree",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:3001/api/tree",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "3001",
+					"path": [
+						"api",
+						"tree"
+					]
+				},
+				"description": "returns the entire tree - in the required json format."
+			},
+			"response": []
+		},
+		{
+			"name": "Add Node",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "default"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"parent\": \"8\",\n    \"label\": \"square little ant\"\n}"
+				},
+				"url": {
+					"raw": "http://127.0.0.1:3001/api/tree",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "3001",
+					"path": [
+						"api",
+						"tree"
+					]
+				},
+				"description": "Adds a node to the end of a list of children\n\nsample response:\n{\n    \"status\": true,\n    \"message\": \"node added successfully\"\n}"
+			},
+			"response": []
+		}
+	]
+}
