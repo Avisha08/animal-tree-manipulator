@@ -19,16 +19,6 @@ class AnimalTree(db.Model):
         children = [child.to_dict() for child in self.children]
         return {str(self.id): {'label': self.label, 'children': children}}
 
-    def get_all_children(self):
-        node = AnimalTree.query.get(self.label)
-        children = []
-
-        for child in node.children:
-            children.append(child)
-            children.extend(get_all_children(child.id))
-
-        return children
-
 
 def seed_database():
     if len(AnimalTree.query.all()) == 0:

@@ -20,9 +20,11 @@ class TreeOperations(Resource):
             label = data['label']
             parent = AnimalTree.query.filter_by(id=parent_id).first()
             if parent is None:
-                return {"status": False, "message": f"parent does not exist"}, 404
+                return {"status": False, "message": f"parent does not exist"}, 400
 
-            # TODO: check for duplicate node
+            existing_node = AnimalTree.query.filter_by(label=label, parent=parent).first()
+            if existing_node:
+                return {'message': 'Node already exists'}, 400
 
             new_node = AnimalTree(label, parent=parent)
             db.session.add(new_node)
